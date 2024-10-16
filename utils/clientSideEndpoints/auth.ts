@@ -1,0 +1,1 @@
+export const loginEndpoint="user-management/user-login"

@@ -1,0 +1,65 @@
+ 
+ 
+
+ 
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  justify-content: center;
+}
+
+.MainDescription {
+  max-width: 50%;
+  font-size: 1.2rem;
+  font-weight: lighter;
+}
+
+.MainGraphic {
+  position: relative;
+}
+
+.shuttle {
+  width: 5rem;
+  height: 5rem;
+  margin: 5rem;
+  transition: easeInOutQuint();
+  animation: CogAnimation 30s linear infinite;
+}
+
+.astronaut {
+  width: 15rem;
+  height: 15rem;
+  transition: easeInOutQuint();
+  animation: CogAnimation2 25s linear infinite;
+}
+
+.world {
+  width: 10rem;
+  height: 10rem;
+  margin-top: 5rem;
+  transition: easeInOutQuint();
+}
+
+@keyframes CogAnimation {
+  0% {
+    transform: rotate(-360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes CogAnimation2 {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
