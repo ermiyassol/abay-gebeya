@@ -11,6 +11,7 @@ export const productEndpoint = "products"
 // updateProductEndPoint = "products/1"; //? PUT
 // updateProductImageEndPoint = "products/- ID -/image"; //? PATCH
 // deleteProductEndPoint = "products/1"; //? DELETE
+// updateFeatured = "products/- ID -/featured?featured=true"
 
 //! -- INVENTORIES --
 export const inventoryEndpoint = "inventories"

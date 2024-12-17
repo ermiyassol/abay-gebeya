@@ -40,10 +40,10 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   
   return (
     <div>
-      <div className="flex justify-between py-6 px-16">
-        <div className="flex justify-start space-x-3">
-          <div className="w-5 h-5 rotate-45 bg-[#12B76A] rounded-sm"></div>
-          <h2 className="font-semibold text-[20px] leading-[24px] text-gray-900">
+      <div className="flex justify-between px-3 py-3 md:px-16">
+        <div className="flex justify-start space-x-3 pt-3 md:pt-0">
+          <div className="w-3 h-3 md:w-5 md:h-5 rotate-45 bg-[#12B76A] rounded-sm"></div>
+          <h2 className="font-semibold text-[20px] leading-[15px] md-leading-[24px] text-gray-900">
             Abay Gebeya
           </h2>
         </div>
@@ -64,15 +64,14 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
             </Button>
           </Flex>}
 
-          {!!userInfo?.role && <Flex className="flex items-center" gap="15px" wrap>
-            <Badge className="mr-4" dot>
-              <BellOutlined style={{ fontSize: 25 }} />
-            </Badge>
+          {!!userInfo?.role && <Flex className="flex items-center space-x-3" wrap>
+            {/* <Badge className="mr-4" dot>
+              <BellOutlined className="text-2xl" />
+            </Badge> */}
 
             <Avatar
             className="capitalize"
               style={{ backgroundColor: "green", verticalAlign: "middle" }}
-              size="large"
               gap={1}
             >
               {userInfo?.firstname[0] + userInfo?.lastname[0]}

@@ -4,10 +4,18 @@ import { ApiResponse } from "@/types/apiResponse";
 import { handleAxiosError } from "./handleRequestError";
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 const axiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_CTAPP_BASE_URL,
-  timeout: 5000,
+  // baseURL: process.env.NEXT_PUBLIC_CTAPP_BASE_URL,
+  timeout: 8000,
   headers: {
     "Content-Type": "application/json",
+  },
+});
+
+const axiosFormDataInstance = axios.create({
+  // baseURL: process.env.NEXT_PUBLIC_CTAPP_BASE_URL,
+  timeout: 8000,
+  headers: {
+    "Content-Type":'multipart/form-data',
   },
 });
 
@@ -54,6 +62,43 @@ const axiosHelper = {
       return handleAxiosError(error);
     }
   },
+
+  authFormDataPost: async (
+    url: string,
+    data: any,
+    token: string
+  ): Promise<ApiResponse | AxiosErrorResponse> => {
+    try {
+      const response: ApiResponse = await axiosFormDataInstance.post(url, data, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      return response;
+    } catch (error) {
+      console.log("ERROR - ", error);
+      return handleAxiosError(error);
+    }
+  },
+
+  authFormDataPatch: async (
+    url: string,
+    data: any,
+    token: string
+  ): Promise<ApiResponse | AxiosErrorResponse> => {
+    try {
+      const response: ApiResponse = await axiosFormDataInstance.patch(url, data, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      return response;
+    } catch (error) {
+      console.log("ERROR - ", error);
+      return handleAxiosError(error);
+    }
+  },
+
   authPut: async (
     url: string,
     data: any,

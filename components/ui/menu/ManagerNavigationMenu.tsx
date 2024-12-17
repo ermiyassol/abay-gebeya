@@ -3,6 +3,7 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Dropdown, Menu, Space } from "antd";
 import { usePathname, useRouter } from "next/navigation";
+import { signOut } from "next-auth/react";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -14,17 +15,6 @@ const itemsL: MenuItem[] = [
   {
     label: "Profile",
     key: "/manager/profile",
-  },
-];
-
-const itemsR: MenuItem[] = [
-  {
-    label: (
-      <Button className="bg-[#CF0000] rounded-2xl" type="primary" danger>
-        Logout
-      </Button>
-    ),
-    key: "logout",
   },
 ];
 
@@ -47,6 +37,22 @@ export const ManagerNavigationMenu = () => {
     router.push(e.key);
   };
 
+  const onLogout = () => {
+
+    signOut({
+      callbackUrl: process.env.NEXT_PUBLIC_BASE_URL,
+      redirect: false,
+    }).then(() => {
+      document.cookie = "next-auth.session-token-abay-gebeya=; Max-Age=0; path=/;"; // Or the specific cookie you need to delete
+    });
+    signOut({
+      callbackUrl: process.env.NEXT_PUBLIC_BASE_URL,
+      redirect: false,
+    }).then(() => {
+      document.cookie = "next-auth.session-token-abay-gebeya=; Max-Age=0; path=/;"; // Or the specific cookie you need to delete
+    });
+  }
+
   return (
     <div className="flex justify-between">
       <Menu
@@ -61,7 +67,16 @@ export const ManagerNavigationMenu = () => {
         onClick={onClick}
         selectedKeys={[current]}
         mode="horizontal"
-        items={itemsR}
+        items={[
+          {
+            label: (
+              <Button onClick={onLogout} className="bg-[#CF0000] rounded-2xl" type="primary" danger>
+                Logout
+              </Button>
+            ),
+            key: "logout",
+          },
+        ]}
       />
 
       {/* <Dropdown menu={{ items: [...itemsL, ...itemsR] }} trigger={["click"]}>

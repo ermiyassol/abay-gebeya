@@ -5,6 +5,8 @@ import { Button, Switch } from "antd";
 interface PropsData {
   width?: string; // 300 default
   data: DataType;
+  onEdit: any;
+  onFeaturedChange: any;
 }
 
 interface DataType {
@@ -17,10 +19,7 @@ interface DataType {
   name: string;
 }
 
-export function AdminProductItem({ width, data }: PropsData) {
-  const onFutureChange = (checked: boolean) => {
-    console.log(`switch to ${checked}`);
-  };
+export function AdminProductItem({ width, data, onEdit, onFeaturedChange }: PropsData) {
 
   return (
     <div
@@ -34,7 +33,7 @@ export function AdminProductItem({ width, data }: PropsData) {
             <h5 className="font-medium text-[15px] flex items-start text-gray-400">
               { data.name }
             </h5>
-            <Button icon={<EditOutlined />} size="small" />
+            <Button icon={<EditOutlined />} size="small" onClick={() => onEdit(data)} />
           </div>
           <div>
             <div className="flex justify-between">
@@ -55,9 +54,9 @@ export function AdminProductItem({ width, data }: PropsData) {
             </div> */}
             <div className="flex justify-between">
               <h5 className="font-medium text-[14px] flex items-end text-gray-400">
-                Future
+                Featured
               </h5>
-              <Switch className="self-center" value={data.featured} defaultChecked onChange={onFutureChange} size="small" />
+              <Switch className="self-center" value={data.featured} defaultChecked onChange={(value) => onFeaturedChange(data.id, value)} size="small" />
             </div>
           </div>
         </div>

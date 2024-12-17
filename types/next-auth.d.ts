@@ -28,13 +28,13 @@ declare module "next-auth" {
   interface User {
     accessToken: string;
     id: string;
-      firstname: string;
-      lastname: string;
-      email: string;
-      phoneNumber: string;
-      role: RolesType;
-      verified: boolean;
-      blocked: boolean;
+    firstname: string;
+    lastname: string;
+    email: string;
+    phoneNumber: string;
+    role: RolesType;
+    verified: boolean;
+    blocked: boolean;
   }
 }
 
@@ -47,15 +47,52 @@ declare module "next-auth/jwt" {
   /** Returned by the `jwt` callback and `getToken`, when using JWT sessions */
   interface JWT {
     user: {
-        accessToken: string;
-        id: string;
-        firstname: string;
-        lastname: string;
-        email: string;
-        phoneNumber: string;
-        role: RolesType;
-        verified: boolean;
-        blocked: boolean;
+      accessToken: string;
+      id: string;
+      firstname: string;
+      lastname: string;
+      email: string;
+      phoneNumber: string;
+      role: RolesType;
+      verified: boolean;
+      blocked: boolean;
     };
   }
+}
+
+export interface GetQueryParams {
+  search: string | null;
+  featured: string;
+  page: number | null;
+  pageSize: number | null;
+  sort: string | null;
+}
+
+export interface GetResponseType {
+  content: any[];
+  pageable: {
+    pageNumber: number;
+    pageSize: number;
+    sort: {
+      empty: boolean;
+      sorted: boolean;
+      unsorted: boolean;
+    };
+    offset: number;
+    unpaged: boolean;
+    paged: boolean;
+  };
+  last: boolean;
+  totalPages: number;
+  totalElements: number;
+  size: number;
+  number: number;
+  sort: {
+    empty: boolean;
+    sorted: boolean;
+    unsorted: boolean;
+  };
+  first: boolean;
+  numberOfElements: number;
+  empty: boolean;
 }

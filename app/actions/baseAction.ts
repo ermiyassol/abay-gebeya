@@ -3,6 +3,50 @@ import axiosHelper from "@/utils/axiosHelper";
 import { ApiResponse } from "@/types/apiResponse";  
 import { AxiosErrorResponse } from "@/types/axiosErrorResponse";
 
+export async function postFormData(
+  url: string,
+  token: string,
+  data: any
+): Promise<any | AxiosErrorResponse> { 
+  try { 
+    let res: ApiResponse | AxiosErrorResponse = (await axiosHelper.authFormDataPost(
+      url,
+      data,
+      token
+    )) as ApiResponse | AxiosErrorResponse;
+    if ("data" in res && res.data) {
+      return res.data;
+    } else {
+      throw new Error("Unexpected response format");
+    }
+  } catch (error) {
+    // console.error(`Error in ${url}`, error);
+    return { error: "An error occurred during the request." };
+  }
+}
+
+export async function patchFormData(
+  url: string,
+  token: string,
+  data: any
+): Promise<any | AxiosErrorResponse> { 
+  try { 
+    let res: ApiResponse | AxiosErrorResponse = (await axiosHelper.authFormDataPatch(
+      url,
+      data,
+      token
+    )) as ApiResponse | AxiosErrorResponse;
+    if ("data" in res && res.data) {
+      return res.data;
+    } else {
+      throw new Error("Unexpected response format");
+    }
+  } catch (error) {
+    // console.error(`Error in ${url}`, error);
+    return { error: "An error occurred during the request." };
+  }
+}
+
 export async function fetchData(
   url: string,
   token: string

@@ -54,7 +54,7 @@ export const ProfileComponent = () => {
         open={open}
       />
       {isLoading && <LoadingSpinner />}
-      {!isLoading && <div className="mt-5 ml-10 w-1/3 space-y-7">
+      {!isLoading && <div className="mt-5 ml-10 md:w-1/3 w-3/4 space-y-7">
         <div className="flex justify-between">
           <Avatar
             style={{ backgroundColor: "#12B76A", verticalAlign: "middle" }}

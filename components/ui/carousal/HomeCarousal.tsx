@@ -10,7 +10,7 @@ export function HomeCarousal() {
       }}
     >
       <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center">
-        <h1 className="text-5xl font-bold mb-4">Abay Gebeya</h1>
+        <h1 className="md:text-5xl font-bold mb-4">Abay Gebeya</h1>
         <p className="text-xl mb-6">Discover new places and adventures.</p>
         <a
           href="#"

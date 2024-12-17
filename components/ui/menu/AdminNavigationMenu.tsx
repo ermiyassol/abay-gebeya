@@ -3,6 +3,7 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Dropdown, Menu, Space } from "antd";
 import { usePathname, useRouter } from "next/navigation";
+import { signOut } from "next-auth/react";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -33,16 +34,6 @@ const itemsL: MenuItem[] = [
   },
 ];
 
-const itemsR: MenuItem[] = [
-  {
-    label: (
-      <Button className="bg-[#CF0000] rounded-2xl" type="primary" danger>
-        Logout
-      </Button>
-    ),
-    key: "logout",
-  },
-];
 
 export const AdminNavigationMenu = () => {
   const [current, setCurrent] = useState<string>("");
@@ -57,6 +48,22 @@ export const AdminNavigationMenu = () => {
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
   };
+
+  const onLogout = () => {
+
+    signOut({
+      callbackUrl: process.env.NEXT_PUBLIC_BASE_URL,
+      redirect: false,
+    }).then(() => {
+      document.cookie = "next-auth.session-token-abay-gebeya=; Max-Age=0; path=/;"; // Or the specific cookie you need to delete
+    });
+    signOut({
+      callbackUrl: process.env.NEXT_PUBLIC_BASE_URL,
+      redirect: false,
+    }).then(() => {
+      document.cookie = "next-auth.session-token-abay-gebeya=; Max-Age=0; path=/;"; // Or the specific cookie you need to delete
+    });
+  }
 
   const onClick: MenuProps["onClick"] = (e) => {
     setCurrent(e.key);
@@ -77,7 +84,16 @@ export const AdminNavigationMenu = () => {
         onClick={onClick}
         selectedKeys={[current]}
         mode="horizontal"
-        items={itemsR}
+        items={[
+          {
+            label: (
+              <Button onClick={onLogout} className="bg-[#CF0000] rounded-2xl" type="primary" danger>
+                Logout
+              </Button>
+            ),
+            key: "logout",
+          },
+        ]}
       />
 
       {/* <Dropdown menu={{ items: [...itemsL, ...itemsR] }} trigger={["click"]}>

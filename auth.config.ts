@@ -85,6 +85,7 @@ export const authConfig = {
       return token;
     },
     session: ({ session, token }: any) => {
+      session.strategy = "jwt"
       if (token.user) {
           session.user = token.user;
       } else {

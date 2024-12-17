@@ -35,9 +35,10 @@ export const InventoryForm = ({ open, handleOk, handleCancel, initialValue, edit
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log("INITIAL VALUE - ", initialValue);
     const fetchProducts = async () => {
       const response = await getAllProducts();
-      setProducts(response.data.map((itm: any) => { return {value: itm.id, label: itm.name}}))
+      setProducts(response.data.content.map((itm: any) => { return {value: itm.id, label: itm.name}}))
       setLoading(false);
     }
 
@@ -83,7 +84,7 @@ export const InventoryForm = ({ open, handleOk, handleCancel, initialValue, edit
   return (
     <Modal
       open={open}
-      title="Inventory Adding Form"
+      title={editMode ? "Inventory Updating Form" : "Inventory Adding Form"}
       onOk={handleOk}
       onCancel={handleCancel}
       footer={[]}

@@ -13,7 +13,7 @@ interface AdminLayoutProps {
 export default function AuthLayout({ children }: AdminLayoutProps) {
   return (
     <div className="flex">
-      <div className="w-1/3 bg-[#12B76A] h-screen grid content-between">
+      <div className="md:w-1/3 hidden bg-[#12B76A] h-screen md:grid content-between">
         <div className="flex justify-start space-x-3 m-7">
           <div className="w-5 h-5 rotate-45 bg-white rounded-sm"></div>
           <h2 className="font-semibold text-[20px] leading-[24px] text-white">
@@ -39,7 +39,14 @@ export default function AuthLayout({ children }: AdminLayoutProps) {
         />
       </div>
 
-      <div className="w-2/3 flex justify-center">{children}</div>
+      <div className="md:w-2/3 w-full md:flex p-8 md:p-0 md:justify-center">
+      <div className="flex justify-start space-x-3  md:hidden">
+          <div className="w-5 h-5 rotate-45 bg-[#12B76A] rounded-sm"></div>
+          <h2 className="font-semibold text-[20px] leading-[24px] text-[#12B76A]">
+            Abay Gebeya
+          </h2>
+        </div>
+      {children}</div>
     </div>
   );
 }

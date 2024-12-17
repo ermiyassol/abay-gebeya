@@ -28,6 +28,7 @@ export const AdminOrdersTable = (props: {
       title: "Order Code",
       dataIndex: "id",
       key: "id",
+      
     },
     {
       title: "Full Name",
@@ -139,6 +140,7 @@ export const AdminOrdersTable = (props: {
       columns={columns}
       dataSource={props.data}
       pagination={false}
+      scroll={{ x: 'max-content' }}
     />
   );
 };

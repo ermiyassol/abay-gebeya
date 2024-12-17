@@ -39,10 +39,10 @@ export default function MainLayout({ children }: MainLayoutProps) {
 
   return (
     <div>
-      <div className="flex justify-between py-6 px-16">
-        <div className="flex justify-start space-x-3">
-          <div className="w-5 h-5 rotate-45 bg-[#12B76A] rounded-sm"></div>
-          <h2 className="font-semibold text-[20px] leading-[24px] text-gray-900">
+      <div className="flex justify-between py-6 px-3 md:px-16">
+        <div className="flex justify-start space-x-3 pt-2 md:pt-0">
+          <div className="w-3 h-3 md:w-5 md:h-5 rotate-45 bg-[#12B76A] rounded-sm"></div>
+          <h2 className="font-semibold text-[15px] md:text-[20px] leading-[10px] md:leading-[24px] text-gray-900">
             Abay Gebeya
           </h2>
         </div>
@@ -50,14 +50,14 @@ export default function MainLayout({ children }: MainLayoutProps) {
           {/* check session */}
           {!userInfo?.role && <Flex gap="small" wrap>
             <Button
-              className="rounded-2xl w-32"
+              className="rounded-2xl w-15 md:w-32"
               type="primary"
               onClick={() => router.push("/signin")}
             >
               Login
             </Button>
             <Button
-              className="rounded-2xl border-2 border-[#12B76A] text-[#12B76A] w-32"
+              className="rounded-2xl border-2 border-[#12B76A] text-[#12B76A] 2-15 md:w-32"
               onClick={() => router.push("/signup")}
             >
               Register
@@ -88,7 +88,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
         </div>
       </div>
       {/* slider component */}
-      <div className="bg-[#EFF0F2] py-5 px-16 space-y-4">
+      <div className="bg-[#EFF0F2] py-5 px-3 md:px-16 space-y-4">
         <div className="flex justify-between">
           <div>
             <h5
@@ -97,12 +97,12 @@ export default function MainLayout({ children }: MainLayoutProps) {
             >
               {new Date().toDateString()}
             </h5>
-            <h3 className="font-medium text-[25px] leading-[24px] text-gray-900">
+            <h3 className="font-medium text-[17px] md:text-[25px] leading-[24px] text-gray-900">
               Good Morning!
             </h3>
           </div>
           <Input
-            className="w-64"
+            className="w-48 md:w-64"
             placeholder="Search For Products"
             prefix={<SearchOutlined className="opacity-40" />}
           />
@@ -110,14 +110,14 @@ export default function MainLayout({ children }: MainLayoutProps) {
         <div className="w-full max-w-full mx-auto">
           <div className="w-full flex flex-row overflow-x-auto snap-x snap-mandatory scrollbar-hide">
             <div className="flex-shrink-0 snap-start space-x-3">
+              {/* <ProductItem />
               <ProductItem />
               <ProductItem />
               <ProductItem />
               <ProductItem />
               <ProductItem />
               <ProductItem />
-              <ProductItem />
-              <ProductItem />
+              <ProductItem /> */}
             </div>
           </div>
         </div>

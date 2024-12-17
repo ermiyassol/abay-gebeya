@@ -51,7 +51,7 @@ const router = useRouter();
         <Button onClick={() => router.push("/home")} icon={<ArrowLeftOutlined />} className="text-green-500" type="text" iconPosition="start">
           Back
         </Button>
-        <div className=" font-mona-sans font-semibold text-[35px] text-[#1D2939]">
+        <div className=" font-mona-sans font-semibold text-[25px] md:text-[35px] text-[#1D2939]">
           Login
         </div>
         <div className="font-mona-sans italic font-normal text-[15px] leading-[28px] text-[#475467]">
