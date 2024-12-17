@@ -7,8 +7,8 @@ import { Suspense } from "react";
 import SessionWrapper from "@/components/sessionWrapper";
 import { ConfigProvider } from "antd";
 export const metadata: Metadata = {
-  title: "One Platform - CT APP Back Office Portal",
-  description: "One platform to rule them all",
+  title: "Abay Gebeya",
+  description: "Abay Gebeya - Best E-Commerce Platform",
 };
 
 const dongle = Gowun_Dodum({
